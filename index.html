@@ -18,9 +18,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       height: 100vh;
-      overflow: hidden;
+      overflow-y: auto;
+      padding: 20px;
     }
 
     .game-container {
@@ -30,6 +31,7 @@
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
       backdrop-filter: blur(10px);
       text-align: center;
+      margin: 20px 0;
     }
 
     h1 {
@@ -98,99 +100,172 @@
       from {opacity: 0; transform: scale(0.95);}
       to {opacity: 1; transform: scale(1);}
     }
+
+    .ad-slot {
+      margin: 20px auto;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
 
-<div class="game-container fade-in">
-  <h1>Tic Tac Toe</h1>
-  <div class="status">Click "Start Game" to begin</div>
-  <div class="board" id="board"></div>
-  <button class="btn" id="startBtn">Start Game</button>
-</div>
+  <!-- Ad Slot 1: Top of the page -->
+  <div class="ad-slot">
+    <script type="text/javascript">
+      atOptions = {
+        'key': '634eb7b2f217ab3cdf3d6efb0cef496c',
+        'format': 'iframe',
+        'height': 50,
+        'width': 320,
+        'params': {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/634eb7b2f217ab3cdf3d6efb0cef496c/invoke.js"></script>
+  </div>
 
-<script>
-  const boardEl = document.getElementById('board');
-  const statusEl = document.querySelector('.status');
-  const startBtn = document.getElementById('startBtn');
-  let board = [];
-  let isGameOver = false;
+  <div class="game-container fade-in">
+    <h1>Tic Tac Toe</h1>
 
-  const winningCombos = [
-    [0,1,2],[3,4,5],[6,7,8], // rows
-    [0,3,6],[1,4,7],[2,5,8], // cols
-    [0,4,8],[2,4,6]          // diagonals
-  ];
+    <!-- Ad Slot 2: Below Title -->
+    <div class="ad-slot">
+      <script type="text/javascript">
+        atOptions = {
+          'key': '634eb7b2f217ab3cdf3d6efb0cef496c',
+          'format': 'iframe',
+          'height': 50,
+          'width': 320,
+          'params': {}
+        };
+      </script>
+      <script type="text/javascript" src="//www.highperformanceformat.com/634eb7b2f217ab3cdf3d6efb0cef496c/invoke.js"></script>
+    </div>
 
-  function initBoard() {
-    board = Array(9).fill('');
-    boardEl.innerHTML = '';
-    isGameOver = false;
-    statusEl.textContent = "Your turn (X)";
-    for (let i = 0; i < 9; i++) {
-      const cell = document.createElement('div');
-      cell.classList.add('cell');
-      cell.dataset.index = i;
-      cell.addEventListener('click', onPlayerMove);
-      boardEl.appendChild(cell);
-    }
-  }
+    <div class="board" id="board"></div>
 
-  function onPlayerMove(e) {
-    const idx = e.target.dataset.index;
-    if (board[idx] === '' && !isGameOver) {
-      makeMove(idx, 'X');
-      const result = checkWinner();
-      if (result) endGame(result);
-      else {
-        statusEl.textContent = "Computer's turn (O)";
-        setTimeout(() => {
-          computerMove();
-          const result2 = checkWinner();
-          if (result2) endGame(result2);
-          else statusEl.textContent = "Your turn (X)";
-        }, 500);
+    <!-- Ad Slot 3: Below Game Board -->
+    <div class="ad-slot">
+      <script type="text/javascript">
+        atOptions = {
+          'key': '634eb7b2f217ab3cdf3d6efb0cef496c',
+          'format': 'iframe',
+          'height': 50,
+          'width': 320,
+          'params': {}
+        };
+      </script>
+      <script type="text/javascript" src="//www.highperformanceformat.com/634eb7b2f217ab3cdf3d6efb0cef496c/invoke.js"></script>
+    </div>
+
+    <div class="status">Click "Start Game" to begin</div>
+    <button class="btn" id="startBtn">Start Game</button>
+
+    <!-- Ad Slot 4: Below Start Button -->
+    <div class="ad-slot">
+      <script type="text/javascript">
+        atOptions = {
+          'key': '634eb7b2f217ab3cdf3d6efb0cef496c',
+          'format': 'iframe',
+          'height': 50,
+          'width': 320,
+          'params': {}
+        };
+      </script>
+      <script type="text/javascript" src="//www.highperformanceformat.com/634eb7b2f217ab3cdf3d6efb0cef496c/invoke.js"></script>
+    </div>
+  </div>
+
+  <!-- Ad Slot 5: Footer -->
+  <div class="ad-slot">
+    <script type="text/javascript">
+      atOptions = {
+        'key': '634eb7b2f217ab3cdf3d6efb0cef496c',
+        'format': 'iframe',
+        'height': 50,
+        'width': 320,
+        'params': {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/634eb7b2f217ab3cdf3d6efb0cef496c/invoke.js"></script>
+  </div>
+
+  <script>
+    const boardEl = document.getElementById('board');
+    const statusEl = document.querySelector('.status');
+    const startBtn = document.getElementById('startBtn');
+    let board = [];
+    let isGameOver = false;
+
+    const winningCombos = [
+      [0,1,2],[3,4,5],[6,7,8],
+      [0,3,6],[1,4,7],[2,5,8],
+      [0,4,8],[2,4,6]
+    ];
+
+    function initBoard() {
+      board = Array(9).fill('');
+      boardEl.innerHTML = '';
+      isGameOver = false;
+      statusEl.textContent = "Your turn (X)";
+      for (let i = 0; i < 9; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.dataset.index = i;
+        cell.addEventListener('click', onPlayerMove);
+        boardEl.appendChild(cell);
       }
     }
-  }
 
-  function makeMove(idx, symbol) {
-    board[idx] = symbol;
-    const cell = boardEl.querySelector(`[data-index="${idx}"]`);
-    cell.textContent = symbol;
-    cell.classList.add('taken');
-  }
-
-  function computerMove() {
-    const emptyIndices = board
-      .map((val, idx) => val === '' ? idx : null)
-      .filter(idx => idx !== null);
-
-    if (emptyIndices.length === 0) return;
-
-    // Simple AI: randomly pick from empty cells
-    const move = emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
-    makeMove(move, 'O');
-  }
-
-  function checkWinner() {
-    for (let combo of winningCombos) {
-      const [a, b, c] = combo;
-      if (board[a] && board[a] === board[b] && board[b] === board[c]) {
-        return board[a] + " wins!";
+    function onPlayerMove(e) {
+      const idx = e.target.dataset.index;
+      if (board[idx] === '' && !isGameOver) {
+        makeMove(idx, 'X');
+        const result = checkWinner();
+        if (result) endGame(result);
+        else {
+          statusEl.textContent = "Computer's turn (O)";
+          setTimeout(() => {
+            computerMove();
+            const result2 = checkWinner();
+            if (result2) endGame(result2);
+            else statusEl.textContent = "Your turn (X)";
+          }, 500);
+        }
       }
     }
-    if (!board.includes('')) return "It's a draw!";
-    return null;
-  }
 
-  function endGame(message) {
-    statusEl.textContent = message;
-    isGameOver = true;
-  }
+    function makeMove(idx, symbol) {
+      board[idx] = symbol;
+      const cell = boardEl.querySelector(`[data-index="${idx}"]`);
+      cell.textContent = symbol;
+      cell.classList.add('taken');
+    }
 
-  startBtn.addEventListener('click', initBoard);
-</script>
+    function computerMove() {
+      const emptyIndices = board
+        .map((val, idx) => val === '' ? idx : null)
+        .filter(idx => idx !== null);
+      if (emptyIndices.length === 0) return;
+      const move = emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+      makeMove(move, 'O');
+    }
 
+    function checkWinner() {
+      for (let combo of winningCombos) {
+        const [a, b, c] = combo;
+        if (board[a] && board[a] === board[b] && board[b] === board[c]) {
+          return board[a] + " wins!";
+        }
+      }
+      if (!board.includes('')) return "It's a draw!";
+      return null;
+    }
+
+    function endGame(message) {
+      statusEl.textContent = message;
+      isGameOver = true;
+    }
+
+    startBtn.addEventListener('click', initBoard);
+  </script>
 </body>
 </html>
